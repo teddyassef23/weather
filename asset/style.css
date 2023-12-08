@@ -1,0 +1,65 @@
+
+body{
+    
+    background-image: url(./img/blue-clouds-day-fluffy.jpeg);
+    width: 100;
+    height: 1000PX;
+}
+.left{
+    background-color: rgb(232, 237, 239);
+    height: 800px;
+}
+.rignt{
+    /* background-color:rgb(220, 241, 245) */
+}
+
+header{
+    background-color: rgb(98, 200, 197);
+    height: 100px;
+    display: flex;
+     align-items:center;
+      justify-items: center;
+}
+header h2{
+    padding: 10%;
+   font-size:300%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   
+}
+.current{
+    border: 1px;
+    border-style: solid;
+    margin: 16px;
+    width: 90vw;
+    height: 35vh;
+}
+.comeing{
+    display: flex;
+}
+element.style{
+    max-width: 65vw;
+}
+.card{
+    margin: 1.5%;
+    border-radius: 15px;
+    
+    background-color: rgb(184, 237, 219);
+}
+.card-body{
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  
+}
+.card-body img{
+    width: 15vw;
+    border-radius: 10px 0 0;
+    align-items: flex-start;
+    
+}
+.card-title img{
+    width: 11vw;
+    height: 14vh;
+    
+    align-items: flex-start;
+}
