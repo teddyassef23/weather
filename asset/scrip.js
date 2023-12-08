@@ -27,6 +27,25 @@ fetch(cuntyCodeAPI)
   })
   .then(function (data) {
     console.log(data);
+    lat = data.lat;
+    lon = data.lon;
+
+    console.log("lat is :" + lat);
+    console.log("lon is :" + lon);
+
+weatherApiURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apikey;
+
+fetch(weatherApiURL)
+.then(function (response) {
+return response.json();
+})
+.then(function (weather) {
+console.log(weather); 
+});
+
+
+
   }); 
+
 
 }
