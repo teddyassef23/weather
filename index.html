@@ -1,159 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./asset/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./asset/style.css">
 </head>
 
 <Header>
-    <H2> Weather forecasting</H2>
+  <H2> Weather forecasting</H2>
 </Header>
+
 <body>
- 
-    <div class="row g-0 text-center">
-        <div class="col-sm-6 col-md-3 left">
 
-            
-            <br><br>
-            
-            <h2 class="card-subtitle mb-2 text-body-secondary">City or zip</h2>
-            <!-- <form type="submit" id="frmSubmit"> -->
-                <div class="mb-3">
-                    <input type="tel" class="form-control" id="searhc" aria-describedby="searchHelp">
-                </div>
-                <button type="button" id="btnSubmit" class="btn btn-primary" onclick="search()">Submit</button>
-            <!-- </form> -->
-            <br><br>
-            <ul id="resentSearched">
+  <div class="row g-0 text-center">
+    <div class="col-sm-6 col-md-3 left">
 
-            </ul>
-        </div>
-        <div class="col-6 col-md-8 rignt">
-           <div>
-            <br><br>
-            <div class="card mb-3 current" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div id="icon" >
-                    
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <img src="./asset/img/weather-2021-12-07.png" alt="">
-                        <h5 id="cityName" class=""></h5>
-                      <h5 class="card-title" id="today"></h5>
-                       
-                      <p class="card-text" id="todaySymbol"></p>
-                      <!-- <img src="./asset/img/todat.jpg" alt=""> -->
-                      <p class="card-text" id="todayFillLike"></p>
-                      <p class="card-text" ><small class="text-body-secondary"></small></p>
-                    </div>
-                  </div>
-                </div>
+
+      <br><br>
+
+      <h2 class="card-subtitle mb-2 text-body-secondary">City or zip</h2>
+      <!-- <form type="submit" id="frmSubmit"> -->
+      <div class="mb-3">
+        <input type="tel" class="form-control" id="searhc" aria-describedby="searchHelp">
+      </div>
+      <button type="button" id="btnSubmit" class="btn btn-primary" onclick="searhc() ">Submit</button>
+      <!-- </form> -->
+      <br><br>
+      <ul id="resentSearched">
+
+      </ul>
+    </div>
+    <div class="col-6 col-md-8 rignt">
+      <div>
+        <br><br>
+        <H1 id="CityName"></H1>
+        <!-- Day 0 -->
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="todayTem" src="..." class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-title">
+                <h5 id="today"> </h5>
+              </div>
+              <div class="card-body">
+
+                <p id="day0Min">Min- </p>
+                <p id="day0Max">Max- </p>
               </div>
 
-              
-           </div>
-           
-            <div>
-                <div class="col-12">
-                    <div class="p-3 comeing">
-
-                        <div class="card" style="width: 18rem;">
-                            <!-- <img src="#" class="card-img-top" alt="..."> -->
-                            <div class="card-body">
-                              <h5 class="card-title">   
-                                <img src="./asset/img/weather-2021-12-07.png" alt=""></h5>
-                              
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item"> &#xf73c; </li>
-                              <li class="list-group-item">&#xf73c;</li>
-                              <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body" id="iconToday">
-                              <a href="#" class="card-link">Card link</a>
-                              <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-    
-                        <div class="card" style="width: 18rem;">
-                            <!-- <img src="#" class="card-img-top" alt="..."> -->
-                            <div class="card-body">
-                              <h5 class="card-title"> <img src="./asset/img/weather-2021-12-07.png" alt=""></h5>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item"></li>
-                              <li class="list-group-item">A second item</li>
-                              <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                              <a href="#" class="card-link">Card link</a>
-                              <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-    
-                        <div class="card" style="width: 18rem;">
-                            <!-- <img src="#" class="card-img-top" alt="..."> -->
-                            <div class="card-body">
-                              <h5 class="card-title"> <img src="./asset/img/weather-2021-12-07.png" alt=""></h5>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">An item</li>
-                              <li class="list-group-item">A second item</li>
-                              <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                              <a href="#" class="card-link">Card link</a>
-                              <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-    
-    
-                        <div class="card" style="width: 18rem;">
-                            <!-- <img src="#" class="card-img-top" alt="..."> -->
-                            <div class="card-body">
-                              <h5 class="card-title"> <img src="./asset/img/weather-2021-12-07.png" alt=""></h5>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">An item</li>
-                              <li class="list-group-item">A second item</li>
-                              <li class="list-group-item">A third item</li>
-                            </ul>
-                            <div class="card-body">
-                              <a href="#" class="card-link">Card link</a>
-                              <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;">
-                          <!-- <img src="#" class="card-img-top" alt="..."> -->
-                          <div class="card-body">
-                            <h5 class="card-title"> <img src="./asset/img/weather-2021-12-07.png" alt=""></h5>
-                          </div>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                          </ul>
-                          <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                          </div>
-                      </div>
-                    </div>
-                </div>
             </div>
+          </div>
+
         </div>
       </div>
-      <script src="./asset/scrip.js"></script>
-      <script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-        
+
+      <div>
+        <div class="col-12">
+          <div class="p-3 comeing">
+
+            <!-- Day 1 -->
+            <div class="card" style="width: 18rem;">
+              <img id="day1img" src="" alt="">
+              <div class="card-body">
+                <h5 id="day1head" class="card-title">
+
+
+              </div>
+              <ul class="list-group list-group-flush">
+                <li id="day1temp" class="list-group-item">Day Temp </li>
+                <li id="day1feelLike" class="list-group-item"> fill Like</li>
+                <li id="day1condition" class="list-group-item">condition </li>
+                <li id="day1wind" class="list-group-item">wind Speed</li>
+              </ul>
+              <div class="card-body">
+                <ul>
+                  <li id="day1Min" class="list-group-item">Min- </li>
+                  <li id="day1Max" class="list-group-item">Max- </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="card" style="width: 18rem;">
+              <img id="day2img" src="" alt="">
+              <div class="card-body">
+                <h5 id="day1head" class="card-title">
+
+
+              </div>
+              <ul class="list-group list-group-flush">
+                <li id="day2temp" class="list-group-item">Day Temp </li>
+                <li id="day2feelLike" class="list-group-item"> fill Like</li>
+                <li id="day2condition" class="list-group-item">condition </li>
+                <li id="day2wind" class="list-group-item">wind Speed</li>
+              </ul>
+              <div class="card-body">
+                <ul>
+                  <li id="day2Min" class="list-group-item">Min- </li>
+                  <li id="day2Max" class="list-group-item">Max- </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="card" style="width: 18rem;">
+              <img id="day3img" src="" alt="">
+              <div class="card-body">
+                <h5 id="day3head" class="card-title">
+
+
+              </div>
+              <ul class="list-group list-group-flush">
+                <li id="day3temp" class="list-group-item">Day Temp </li>
+                <li id="day3feelLike" class="list-group-item"> fill Like</li>
+                <li id="day3condition" class="list-group-item">condition </li>
+                <li id="day3wind" class="list-group-item">wind Speed</li>
+              </ul>
+              <div class="card-body">
+                <ul>
+                  <li id="day3Min" class="list-group-item">Min- </li>
+                  <li id="day3Max" class="list-group-item">Max- </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+
+
+            <!-- Day 4 -->
+            <div class="card" style="width: 18rem;">
+              <img id="day4img" src="" alt="">
+              <div class="card-body">
+                <h5 id="day1head" class="card-title">
+
+
+              </div>
+              <ul class="list-group list-group-flush">
+                <li id="day4temp" class="list-group-item">Day Temp </li>
+                <li id="day4feelLike" class="list-group-item"> fill Like</li>
+                <li id="day4condition" class="list-group-item">condition </li>
+                <li id="day4wind" class="list-group-item">wind Speed</li>
+              </ul>
+              <div class="card-body">
+                <ul>
+                  <li id="day4Min" class="list-group-item">Min- </li>
+                  <li id="day4Max" class="list-group-item">Max- </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+
+            <!-- Day 5 -->
+            <div class="card" style="width: 18rem;">
+              <img id="day5img" src="" alt="">
+              <div class="card-body">
+                <h5 id="day1head" class="card-title">
+
+
+              </div>
+              <ul class="list-group list-group-flush">
+                <li id="day5temp" class="list-group-item">Day Temp </li>
+                <li id="day5feelLike" class="list-group-item"> fill Like</li>
+                <li id="day5condition" class="list-group-item">condition </li>
+                <li id="day5wind" class="list-group-item">wind Speed</li>
+              </ul>
+              <div class="card-body">
+                <ul>
+                  <li id="day5Min" class="list-group-item">Min- </li>
+                  <li id="day5Max" class="list-group-item">Max- </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./asset/scrip.js"></script>
+  <script src="http://code.jquery.com/jquery-3.1.0.min.js"
+    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

@@ -57,6 +57,11 @@ element.style{
     align-items: flex-start;
     
 }
+.card-titl{
+    width: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
 .card-title img{
     width: 11vw;
     height: 14vh;
