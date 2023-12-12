@@ -55,12 +55,12 @@ function searhc() {
           for (var i = 1; i < lastKey.length -1; i++) {
             console.log("list of city is: " + lastKey[i]);
              var ul = document.getElementById("list");
-             var li = document.createElement("button");
+             var li = document.createElement("li");
         
              li.appendChild(document.createTextNode(lastKey[i]));
-             ul.appendChild(button);
+             ul.appendChild(li);
         
-             city += "<button>"  + lastKey[i] + "</button>";
+             city += "<li>"  + lastKey[i] + "</li>";
           }
 
           
