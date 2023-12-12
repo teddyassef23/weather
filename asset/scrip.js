@@ -92,7 +92,7 @@ document.getElementById("list").innerHTML = city;
         
           document.getElementById("day0temp").textContent =      "Today Temp : " + Math.round((weather.list[0].main.temp - 273.15) * 1.8 + 32);
           document.getElementById("day0feelLike").textContent =  "Today feel like " + Math.round((weather.list[0].main.feels_like - 273.15) * 1.8 + 32);
-          document.getElementById("day0condition").textContent = "Today condition " + weather.list[0].weather[0].main;
+          document.getElementById("day0condition").textContent =  weather.list[0].weather[0].main;
           document.getElementById("day1wind").textContent =      "wind Speed " + weather.list[0].wind.speed;
           document.getElementById("day0Min").textContent =       "Min-" + Math.round((weather.list[0].main.temp_min - 273.15) * 1.8 + 32);
           document.getElementById("day0Max").textContent =       "Max-" + Math.round((weather.list[0].main.temp_max - 273.15) * 1.8 + 32);

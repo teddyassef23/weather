@@ -61,10 +61,26 @@ element.style{
     width: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: italic;
+    padding: 60px;
 }
 .card-title img{
     width: 11vw;
     height: 14vh;
     
     align-items: flex-start;
+}
+.min,
+.max{
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(109, 88, 38);
+    margin: 35px;
+    padding: 15px;
+    background-color: rgb(160, 215, 76);
+    width: 40vw;
+}
+h5{
+    padding: 1%;;
+    padding-top: 30px;
+    background-color: rgb(107, 236, 159);
 }
