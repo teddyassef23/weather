@@ -1,5 +1,6 @@
 
-var zip = document.getElementById("frmSubmit");
+
+var lastKey = [];
 var lat, lon;
 var weatherApiURL;
 var requestUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat';
@@ -17,7 +18,8 @@ var tempicoDay1, tempicoDay2, tempicoDay3, tempicoDay4, tempicoDay5, tempIcoDay6
 var fullWeatherData
 function searhc() {
   var zip = document.getElementById("searhc").value;
-
+  if (!zip){ zip = "55108"}
+  
   var cuntyCodeAPI = 'http://api.openweathermap.org/geo/1.0/zip?zip=' + zip + '&appid=9d21cee1b28b1481203a53b4d7fd6a12'
   // var cuntyCodeAPI = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=9d21cee1b28b1481203a53b4d7fd6a12'
 
@@ -43,159 +45,107 @@ function searhc() {
           console.log(weather);
 
           document.getElementById("CityName").textContent = weather.city.name + ", " + weather.city.country;
+          let city = weather.city.name + ", " + weather.city.country;
+
+          lastKey.push(city);
+          console.log("leangth of arrery :" + lastKey.length);
+          // update(lastKey, city)
+
+
+          for (var i = 1; i < lastKey.length -1; i++) {
+            console.log("list of city is: " + lastKey[i]);
+             var ul = document.getElementById("list");
+             var li = document.createElement("button");
+        
+             li.appendChild(document.createTextNode(lastKey[i]));
+             ul.appendChild(button);
+        
+             city += "<button>"  + lastKey[i] + "</button>";
+          }
+
           
+document.getElementById("list").innerHTML = city;
+
+
+
+
+
+
+
+
           //    // All days waether icon
-          
-          
+
+
           document.getElementById("todayTem").src = 'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png';
           document.getElementById("day1img").src = 'https://openweathermap.org/img/wn/' + weather.list[1].weather[0].icon + '@2x.png';
           document.getElementById("day2img").src = 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png';
           document.getElementById("day3img").src = 'https://openweathermap.org/img/wn/' + weather.list[3].weather[0].icon + '@2x.png';
           document.getElementById("day4img").src = 'https://openweathermap.org/img/wn/' + weather.list[4].weather[0].icon + '@2x.png';
           document.getElementById("day5img").src = 'https://openweathermap.org/img/wn/' + weather.list[5].weather[0].icon + '@2x.png';
-          
+
           //    // All days waether Tempertuer
-          // console.log("temp is :" + weather.list[0].main[0].temp);
-
-          document.getElementById("today").textContent = " To days Tempretuer " + weather.list[0].main.temp;
+    
 
 
-          // document.getElementById("day1temp").textContent = weather.list[1].main.temp;
-
-          console.log("day feel like " + weather.list[1].main.feels_like);
-          console.log("day1condition " + weather.list[1].weather[0].main);
-          console.log("day1wind " + weather.list[1].wind.speed);
-          console.log("day1Min" + weather.list[1].main.temp_min);
-          console.log("day1Max " + weather.list[1].main.temp_max);
-
-
-          
-                        //Day 0 
-                    document.getElementById("day0temp").textContent = "Today Temp is : " + weather.list[0].main.feels_like;
-                    document.getElementById("day0feelLike").textContent =  "Today feel like " + weather.list[0].main.feels_like;
-                    document.getElementById("day0condition").textContent = "Today condition " + weather.list[0].weather[0].main;
-                    document.getElementById("day0wind").textContent = "wind Speed " + weather.list[0].wind.speed;
-                    document.getElementById("day0Min").textContent = "Min-" + weather.list[0].main.temp_min;
-                    document.getElementById("day0Max").textContent = "Max-" + weather.list[0].main.temp_max;
-
-
-              //Day 1 
-          document.getElementById("day1temp").textContent = "day feel like " + weather.list[1].main.feels_like;
-          document.getElementById("day1feelLike").textContent += weather.list[1].main.feels_like;
-          document.getElementById("day1condition").textContent = "day1condition " + weather.list[1].weather[0].main;
-          document.getElementById("day1wind").textContent = "day1wind " + weather.list[1].wind.speed;
-          document.getElementById("day1Min").textContent = "day1Min" + weather.list[1].main.temp_min;
-          document.getElementById("day1Max").textContent = "day1Max " + weather.list[1].main.temp_max;
-
-              //Day 1 
-          document.getElementById("day1temp").textContent = "day feel like " + weather.list[1].main.feels_like;
-          document.getElementById("day1feelLike").textContent += weather.list[1].main.feels_like;
-          document.getElementById("day1condition").textContent = "day1condition " + weather.list[1].weather[0].main;
-          document.getElementById("day1wind").textContent = "day1wind " + weather.list[1].wind.speed;
-          document.getElementById("day1Min").textContent = "day1Min" + weather.list[1].main.temp_min;
-          document.getElementById("day1Max").textContent = "day1Max " + weather.list[1].main.temp_max;
-          
-              //Day 1 
-          document.getElementById("day1temp").textContent = "day feel like " + weather.list[1].main.feels_like;
-          document.getElementById("day1feelLike").textContent += weather.list[1].main.feels_like;
-          document.getElementById("day1condition").textContent = "day1condition " + weather.list[1].weather[0].main;
-          document.getElementById("day1wind").textContent = "day1wind " + weather.list[1].wind.speed;
-          document.getElementById("day1Min").textContent = "day1Min" + weather.list[1].main.temp_min;
-          document.getElementById("day1Max").textContent = "day1Max " + weather.list[1].main.temp_max;
-          
-              //Day 2
-          document.getElementById("day2temp").textContent = "day feel like " + weather.list[2].main.feels_like;
-          document.getElementById("day2feelLike").textContent += weather.list[2].main.feels_like;
-          document.getElementById("day2condition").textContent = "day1condition " + weather.list[2].weather[0].main;
-          document.getElementById("day2wind").textContent = "day1wind " + weather.list[2].wind.speed;
-          document.getElementById("day2Min").textContent = "day1Min" + weather.list[2].main.temp_min;
-          document.getElementById("day2Max").textContent = "day1Max " + weather.list[2].main.temp_max;
-          
-              //Day 3
-          document.getElementById("day3temp").textContent = "day feel like " + weather.list[3].main.feels_like;
-          document.getElementById("day3feelLike").textContent += weather.list[3].main.feels_like;
-          document.getElementById("day3condition").textContent = "day1condition " + weather.list[3].weather[0].main;
-          document.getElementById("day3wind").textContent = "day1wind " + weather.list[3].wind.speed;
-          document.getElementById("day3Min").textContent = "day1Min" + weather.list[3].main.temp_min;
-          document.getElementById("day3Max").textContent = "day1Max " + weather.list[3].main.temp_max;
+          //Day 0 
+         
+        
+          document.getElementById("day0temp").textContent =      "Today Temp : " + Math.round((weather.list[0].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day0feelLike").textContent =  "Today feel like " + Math.round((weather.list[0].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day0condition").textContent = "Today condition " + weather.list[0].weather[0].main;
+          document.getElementById("day1wind").textContent =      "wind Speed " + weather.list[0].wind.speed;
+          document.getElementById("day0Min").textContent =       "Min-" + Math.round((weather.list[0].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day0Max").textContent =       "Max-" + Math.round((weather.list[0].main.temp_max - 273.15) * 1.8 + 32);
           
           
+          //Day 1 
+          document.getElementById("day1temp").textContent   =     "Temp " + Math.round((weather.list[1].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day1feelLike").textContent =   "feel like " + Math.round((weather.list[1].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day1condition").textContent =  weather.list[1].weather[0].main;
+          document.getElementById("day1wind").textContent =       "wind Speed " + weather.list[1].wind.speed;
+          document.getElementById("day1Min").textContent =        "Min " + Math.round((weather.list[1].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day1Max").textContent   =      "Max " + Math.round((weather.list[1].main.temp_max - 273.15) * 1.8 + 32);
+
+          //Day 2
+          document.getElementById("day2temp").textContent   =     "Temp " + Math.round((weather.list[2].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day2feelLike").textContent =   "feel like " + Math.round((weather.list[2].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day2condition").textContent =  weather.list[2].weather[0].main;
+          document.getElementById("day2wind").textContent =       "wind Speed " + weather.list[2].wind.speed;
+          document.getElementById("day2Min").textContent =        "Min " + Math.round((weather.list[2].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day2Max").textContent   =      "Max " + Math.round((weather.list[2].main.temp_max - 273.15) * 1.8 + 32);
+
+          //Day 3
+          document.getElementById("day3temp").textContent   =     "Temp " + Math.round((weather.list[3].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day3feelLike").textContent =   "feel like " + Math.round((weather.list[3].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day3condition").textContent =  weather.list[3].weather[0].main;
+          document.getElementById("day3wind").textContent =       "wind Speed " + weather.list[3].wind.speed;
+          document.getElementById("day3Min").textContent =        "Min " + Math.round((weather.list[3].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day3Max").textContent   =      "Max " + Math.round((weather.list[3].main.temp_max - 273.15) * 1.8 + 32);
+
           //Day 4
-          document.getElementById("day4temp").textContent = "day feel like " + weather.list[4].main.feels_like;
-          document.getElementById("day4feelLike").textContent += weather.list[4].main.feels_like;
-          document.getElementById("day4condition").textContent = "day1condition " + weather.list[4].weather[0].main;
-          document.getElementById("day4wind").textContent = "day1wind " + weather.list[4].wind.speed;
-          document.getElementById("day4Min").textContent = "day1Min" + weather.list[4].main.temp_min;
-          document.getElementById("day4Max").textContent = "day1Max " + weather.list[4].main.temp_max;
-      // All days waether Fill like
-      
-      //Day 5
-         document.getElementById("day5temp").textContent = "day feel like " + weather.list[5].main.feels_like;
-         document.getElementById("day5feelLike").textContent += weather.list[5].main.feels_like;
-         document.getElementById("day5condition").textContent = "day1condition " + weather.list[5].weather[0].main;
-         document.getElementById("day5wind").textContent = "day1wind " + weather.list[5].wind.speed;
-         document.getElementById("day5Min").textContent = "day1Min" + weather.list[5].main.temp_min;
-         document.getElementById("day5Max").textContent = "day1Max " + weather.list[5].main.temp_max;
+          document.getElementById("day4temp").textContent   =     "Temp " + Math.round((weather.list[4].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day4feelLike").textContent =   "feel like " + Math.round((weather.list[4].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day4condition").textContent =  weather.list[4].weather[0].main;
+          document.getElementById("day4wind").textContent =       "wind Speed " + weather.list[4].wind.speed;
+          document.getElementById("day4Min").textContent =        "Min " + Math.round((weather.list[4].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day4Max").textContent   =      "Max " + Math.round((weather.list[4].main.temp_max - 273.15) * 1.8 + 32);
 
-
-          // document.getElementById("todayTem").src = 'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png';
-          // document.getElementById("day1img").src = 'https://openweathermap.org/img/wn/' + weather.list[1].weather[0].icon + '@2x.png';
-          // document.getElementById("day2img").src = 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png';
-          // document.getElementById("day3img").src = 'https://openweathermap.org/img/wn/' + weather.list[3].weather[0].icon + '@2x.png';
-          // document.getElementById("day4img").src = 'https://openweathermap.org/img/wn/' + weather.list[4].weather[0].icon + '@2x.png';
-          // document.getElementById("day5img").src = 'https://openweathermap.org/img/wn/' + weather.list[5].weather[0].icon + '@2x.png';
-          
-          
-          
-          // All days waether Min
-          
-          // document.getElementById("todayTem").src = 'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png';
-          // document.getElementById("day1img").src = 'https://openweathermap.org/img/wn/' + weather.list[1].weather[0].icon + '@2x.png';
-          // document.getElementById("day2img").src = 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png';
-          // document.getElementById("day3img").src = 'https://openweathermap.org/img/wn/' + weather.list[3].weather[0].icon + '@2x.png';
-          // document.getElementById("day4img").src = 'https://openweathermap.org/img/wn/' + weather.list[4].weather[0].icon + '@2x.png';
-          // document.getElementById("day5img").src = 'https://openweathermap.org/img/wn/' + weather.list[5].weather[0].icon + '@2x.png';
-          
-          
-          // All days waether Max
-          
-          // document.getElementById("todayTem").src = 'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png';
-          // document.getElementById("day1img").src = 'https://openweathermap.org/img/wn/' + weather.list[1].weather[0].icon + '@2x.png';
-          // document.getElementById("day2img").src = 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png';
-          // document.getElementById("day3img").src = 'https://openweathermap.org/img/wn/' + weather.list[3].weather[0].icon + '@2x.png';
-          // document.getElementById("day4img").src = 'https://openweathermap.org/img/wn/' + weather.list[4].weather[0].icon + '@2x.png';
-          // document.getElementById("day5img").src = 'https://openweathermap.org/img/wn/' + weather.list[5].weather[0].icon + '@2x.png';
-          
-          
-          // All days waether condetion
-          
-          // document.getElementById("todayTem").src = 'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png';
-          // document.getElementById("day1img").src = 'https://openweathermap.org/img/wn/' + weather.list[1].weather[0].icon + '@2x.png';
-          // document.getElementById("day2img").src = 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png';
-          // document.getElementById("day3img").src = 'https://openweathermap.org/img/wn/' + weather.list[3].weather[0].icon + '@2x.png';
-          // document.getElementById("day4img").src = 'https://openweathermap.org/img/wn/' + weather.list[4].weather[0].icon + '@2x.png';
-          // document.getElementById("day5img").src = 'https://openweathermap.org/img/wn/' + weather.list[5].weather[0].icon + '@2x.png';
-          
-          
-          
-          
-          
-          
-          // document.getElementById("todayFillLike").textContent = "feels like " + weather.list[0].main.feels_like;
-          // document.getElementById("today").textContent = "Temp " + weather.list[0].main.temp;
-          // document.getElementById("Min-max").textContent = "Temp " + weather.list[0].main.temp;
-          // console.log("icon :" + weather.list[0].weather.icon);
-          // // Day one weather condetion
-
-          // document.getElementById("day1img").textContent = weather.list[0].weather.icon;
-          // document.getElementById("day1temp").textContent = weather.list[0].main.temp;
-          // document.getElementById("day1feelLike").textContent = weather.list[0].main.temp;
-          // document.getElementById("day1symbol").textContent = weather.list[0].main.temp;
-          // document.getElementById("day1min-max").textContent = weather.list[0].main.temp;
+          //Day 5
+          document.getElementById("day5temp").textContent   =     "Temp " + Math.round((weather.list[5].main.temp - 273.15) * 1.8 + 32);
+          document.getElementById("day5feelLike").textContent =   "feel like " + Math.round((weather.list[5].main.feels_like - 273.15) * 1.8 + 32);
+          document.getElementById("day5condition").textContent =  weather.list[5].weather[0].main;
+          document.getElementById("day5wind").textContent =       "wind Speed " + weather.list[5].wind.speed;
+          document.getElementById("day5Min").textContent =        "Min " + Math.round((weather.list[5].main.temp_min - 273.15) * 1.8 + 32);
+          document.getElementById("day5Max").textContent   =      "Max " + Math.round((weather.list[5].main.temp_max - 273.15) * 1.8 + 32);
 
 
 
-        });
+
+
+
+
+
+});
 
 
 
@@ -203,3 +153,22 @@ function searhc() {
 
 
 }
+function update(list, city) {
+  console.log(list);    
+
+  for (var i = 0; i < list.length; i++) {
+    console.log("list of city is: " + list[i]);
+     var ul = document.getElementById("list");
+     var li = document.createElement("li");
+
+     li.appendChild(document.createTextNode(list[i]));
+     ul.appendChild(li);
+
+     letters += "<li>"  + list[i] + "</li>";
+  }
+
+document.getElementById("list").innerHTML = city;
+
+}
+
+searhc();
